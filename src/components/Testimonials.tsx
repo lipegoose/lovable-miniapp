@@ -34,8 +34,6 @@ const testimonialsData = [
 const Testimonials = () => {
   const [api, setApi] = useState<CarouselApi>();
   const [activeIndex, setActiveIndex] = useState(0);
-  const autoplayRef = useRef<NodeJS.Timeout | null>(null);
-  const [isHovering, setIsHovering] = useState(false);
   
   // Controle do índice ativo
   useEffect(() => {
@@ -50,44 +48,6 @@ const Testimonials = () => {
       api.off("select", handleSelect);
     };
   }, [api]);
-  
-  // Funcionalidade de autoplay
-  useEffect(() => {
-    if (!api) return;
-    
-    const startAutoplay = () => {
-      stopAutoplay();
-      autoplayRef.current = setInterval(() => {
-        api.scrollNext();
-      }, 3000);
-    };
-    
-    const stopAutoplay = () => {
-      if (autoplayRef.current) {
-        clearInterval(autoplayRef.current);
-        autoplayRef.current = null;
-      }
-    };
-    
-    // Apenas inicia o autoplay se não estiver com o mouse sobre o carrossel
-    if (!isHovering) {
-      startAutoplay();
-    } else {
-      stopAutoplay();
-    }
-    
-    return () => {
-      stopAutoplay();
-    };
-  }, [api, isHovering]);
-  
-  const handleMouseEnter = () => {
-    setIsHovering(true);
-  };
-  
-  const handleMouseLeave = () => {
-    setIsHovering(false);
-  };
 
   return (
     <section className="py-20 bg-gray-50">
@@ -97,11 +57,7 @@ const Testimonials = () => {
           <p>Confira a experiência de quem já utiliza o MiniApp-i para impulsionar sua presença digital.</p>
         </div>
         
-        <div 
-          className="relative max-w-6xl mx-auto"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
+        <div className="relative max-w-6xl mx-auto">
           <Carousel 
             setApi={setApi}
             className="mx-auto"
@@ -109,7 +65,7 @@ const Testimonials = () => {
               align: "center",
               loop: true,
               skipSnaps: false,
-              containScroll: false,
+              containScroll: "trimSnaps",
             }}
           >
             <CarouselContent>
@@ -118,7 +74,7 @@ const Testimonials = () => {
                   key={index} 
                   className="md:basis-1/3 basis-full"
                 >
-                  <div className="testimonial-card h-full">
+                  <div className="testimonial-card h-full bg-white p-6 rounded-lg shadow-sm border border-gray-100">
                     <div className="flex mb-4">
                       {[1, 2, 3, 4, 5].map((star) => (
                         <Star key={star} size={18} className="text-yellow-400 fill-yellow-400" />
