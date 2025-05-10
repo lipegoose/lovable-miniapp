@@ -24,6 +24,12 @@ const testimonialsData = [
     avatar: "https://randomuser.me/api/portraits/women/44.jpg"
   },
   {
+    text: "Como precisava de algo mais personalizado que o Linktree, O MiniApp-i me deu total liberdade criativa e as estatísticas me ajudam a entender melhor meu público.",
+    name: "Luiz Campos",
+    role: "Content Creator",
+    avatar: "https://randomuser.me/api/portraits/women/44.jpg"
+  },
+  {
     text: "Implementamos o MiniApp-i para toda nossa equipe de vendas e os resultados foram impressionantes. A facilidade de atualização e o design profissional fizeram toda diferença.",
     name: "Fernando Alves",
     role: "Diretor Comercial",
