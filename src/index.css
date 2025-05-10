@@ -149,6 +149,28 @@ header.scrolled {
   @apply flex items-center gap-6;
 }
 
+/* Estilização do botão Cadastrar igual ao site original */
+.btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(106, 17, 203, 0.4);
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(106, 17, 203, 0.5);
+  color: #ffffff;
+}
+
 @media (max-width: 1023px) {
   .nav-links {
     @apply fixed top-[70px] left-0 w-full bg-white flex-col p-5 shadow-lg transition-all duration-300 transform -translate-y-[150%] opacity-0;
