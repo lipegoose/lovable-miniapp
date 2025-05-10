@@ -276,6 +276,85 @@ header.scrolled {
   100% { transform: translateY(0px); }
 }
 
+/* Como Funciona Section */
+.how-it-works {
+  background-color: var(--white);
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-title h2 {
+  font-size: 2.5rem;
+  color: var(--dark);
+  margin-bottom: 15px;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title h2:after {
+  content: '';
+  display: block;
+  width: 50%;
+  height: 3px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  margin: 10px auto 0;
+}
+
+.section-title p {
+  font-size: 1.2rem;
+  color: var(--gray);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.steps {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+.step {
+  flex: 1;
+  text-align: center;
+  padding: 30px;
+  background-color: var(--light-gray);
+  border-radius: var(--border-radius);
+  margin: 0 15px;
+  transition: var(--transition);
+}
+
+.step:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--box-shadow);
+}
+
+.step-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  color: var(--white);
+  border-radius: 50%;
+  font-size: 30px;
+}
+
+.step h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: var(--primary-dark);
+}
+
+.step p {
+  color: var(--gray);
+  line-height: 1.6;
+}
+
 @media (max-width: 1023px) {
   .nav-links {
     @apply fixed top-[70px] left-0 w-full bg-white flex-col p-5 shadow-lg transition-all duration-300 transform -translate-y-[150%] opacity-0;
