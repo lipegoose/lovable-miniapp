@@ -97,7 +97,7 @@ const TargetAudience = () => {
   };
   
   return (
-    <section className="py-20 bg-gray-50" id="publico-alvo">
+    <section className="target-audience py-20" id="publico-alvo">
       <div className="container mx-auto px-4">
         <div className="section-title">
           <h2>Para Quem É</h2>
@@ -129,8 +129,8 @@ const TargetAudience = () => {
                     <div className="audience-icon">
                       {item.icon}
                     </div>
-                    <h3 className="text-xl font-semibold mb-3 text-miniapp-primary">{item.title}</h3>
-                    <p className="text-gray-600">{item.description}</p>
+                    <h3>{item.title}</h3>
+                    <p>{item.description}</p>
                   </div>
                 </CarouselItem>
               ))}
