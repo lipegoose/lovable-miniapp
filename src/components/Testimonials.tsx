@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Star } from 'lucide-react';
 import {
   Carousel,
@@ -40,6 +40,8 @@ const testimonialsData = [
 const Testimonials = () => {
   const [api, setApi] = useState<CarouselApi>();
   const [activeIndex, setActiveIndex] = useState(0);
+  const autoplayRef = useRef<NodeJS.Timeout | null>(null);
+  const [isHovering, setIsHovering] = useState(false);
   
   // Controle do índice ativo
   useEffect(() => {
@@ -55,6 +57,44 @@ const Testimonials = () => {
     };
   }, [api]);
 
+  // Configuração de autoplay para garantir o loop infinito
+  useEffect(() => {
+    if (!api) return;
+    
+    const startAutoplay = () => {
+      stopAutoplay();
+      autoplayRef.current = setInterval(() => {
+        api.scrollNext();
+      }, 5000); // Intervalo maior (5 segundos) para ser menos intrusivo
+    };
+    
+    const stopAutoplay = () => {
+      if (autoplayRef.current) {
+        clearInterval(autoplayRef.current);
+        autoplayRef.current = null;
+      }
+    };
+    
+    // Pausa o autoplay quando o mouse está sobre o carrossel
+    if (!isHovering) {
+      startAutoplay();
+    } else {
+      stopAutoplay();
+    }
+    
+    return () => {
+      stopAutoplay();
+    };
+  }, [api, isHovering]);
+  
+  const handleMouseEnter = () => {
+    setIsHovering(true);
+  };
+  
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+  };
+
   return (
     <section className="py-20 bg-gray-50">
       <div className="container mx-auto px-4">
@@ -63,13 +103,18 @@ const Testimonials = () => {
           <p>Confira a experiência de quem já utiliza o MiniApp-i para impulsionar sua presença digital.</p>
         </div>
         
-        <div className="relative max-w-6xl mx-auto">
+        <div 
+          className="relative max-w-6xl mx-auto"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
           <Carousel 
             setApi={setApi}
             className="mx-auto"
             opts={{
               align: "center",
               loop: true,
+              dragFree: true
             }}
           >
             <CarouselContent>
