@@ -1,5 +1,5 @@
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { Star } from 'lucide-react';
 import {
   Carousel,
@@ -70,8 +70,6 @@ const Testimonials = () => {
             opts={{
               align: "center",
               loop: true,
-              skipSnaps: false,
-              containScroll: "trimSnaps",
             }}
           >
             <CarouselContent>
