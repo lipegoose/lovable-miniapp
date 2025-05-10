@@ -43,6 +43,7 @@ const Examples = () => {
   const [api, setApi] = useState<CarouselApi>();
   const autoplayRef = useRef<NodeJS.Timeout | null>(null);
   const isMobile = useMediaQuery("(max-width: 768px)");
+  const [isHovering, setIsHovering] = useState(false);
 
   useEffect(() => {
     if (!api) return;
@@ -75,18 +76,25 @@ const Examples = () => {
       }
     };
 
-    startAutoplay();
-
-    // Event listeners to stop/start autoplay on user interaction
-    api.on("pointerDown", stopAutoplay);
-    api.on("pointerUp", startAutoplay);
+    // Apenas inicia o autoplay se não estiver com o mouse sobre o carrossel
+    if (!isHovering) {
+      startAutoplay();
+    } else {
+      stopAutoplay();
+    }
 
     return () => {
       stopAutoplay();
-      api.off("pointerDown", stopAutoplay);
-      api.off("pointerUp", startAutoplay);
     };
-  }, [api]);
+  }, [api, isHovering]);
+
+  const handleMouseEnter = () => {
+    setIsHovering(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+  };
 
   return (
     <section className="py-20 bg-white" id="exemplos">
@@ -101,7 +109,11 @@ const Examples = () => {
           </h3>
         </div>
         
-        <div className="max-w-5xl mx-auto relative">
+        <div 
+          className="max-w-5xl mx-auto relative"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
           <Carousel
             setApi={setApi}
             className="mx-auto"
@@ -142,11 +154,11 @@ const Examples = () => {
             </CarouselContent>
             
             <CarouselPrevious 
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 md:-translate-x-10 bg-white text-miniapp-primary" 
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 md:-translate-x-6 bg-white text-miniapp-primary z-10"
             />
             
             <CarouselNext 
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 md:translate-x-10 bg-white text-miniapp-primary" 
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 md:translate-x-6 bg-white text-miniapp-primary z-10"
             />
           </Carousel>
           
