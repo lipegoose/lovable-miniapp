@@ -44,6 +44,7 @@ const Navigation = () => {
             <li><a href="#planos" onClick={handleNavLinkClick} className="block py-2 hover:text-miniapp-primary transition-colors">Planos</a></li>
             <li><a href="#faq" onClick={handleNavLinkClick} className="block py-2 hover:text-miniapp-primary transition-colors">FAQ</a></li>
             <li><a href="#cadastro" onClick={handleNavLinkClick} className="btn">Cadastrar</a></li>
+            <li><a href="/login" onClick={handleNavLinkClick} className="btn-login">Login</a></li>
           </ul>
         </nav>
       </div>

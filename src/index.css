@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Variáveis CSS do site original */
+:root {
+  --primary: #6a11cb;
+  --primary-light: #8e24aa;
+  --primary-dark: #4a148c;
+  --secondary: #2575fc;
+  --white: #ffffff;
+  --light-gray: #f8f9fa;
+  --gray: #6c757d;
+  --dark: #212529;
+  --success: #28a745;
+  --border-radius: 10px;
+  --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -125,12 +141,16 @@ body {
 }
 
 header {
-  @apply fixed top-0 w-full z-50 bg-white transition-all duration-300 shadow-sm;
+  @apply fixed top-0 w-full z-50 transition-all duration-300;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   height: 80px; /* Altura fixa do header */
+  transition: var(--transition);
 }
 
 header.scrolled {
-  @apply shadow-md;
+  background-color: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
 }
 
 .logo-link {
@@ -147,6 +167,28 @@ header.scrolled {
 
 .nav-links {
   @apply flex items-center gap-6;
+  margin: auto 0;
+}
+
+.nav-links li {
+  margin-left: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.nav-links a:not(.btn):not(.btn-login) {
+  color: var(--dark);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+  line-height: 1;
+  display: flex;
+  align-items: center;
+}
+
+.nav-links a:not(.btn):not(.btn-login):hover {
+  color: var(--primary);
+  font-weight: bold;
 }
 
 /* Estilização do botão Cadastrar igual ao site original */
@@ -169,6 +211,28 @@ header.scrolled {
   transform: translateY(-3px);
   box-shadow: 0 8px 25px rgba(106, 17, 203, 0.5);
   color: #ffffff;
+}
+
+/* Estilização do botão Login */
+.btn-login {
+  display: inline-block;
+  padding: 10px 25px;
+  background: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-left: 10px;
+}
+
+.btn-login:hover {
+  background-color: rgba(106, 17, 203, 0.1);
+  transform: translateY(-2px);
+  color: var(--primary-dark);
 }
 
 @media (max-width: 1023px) {
