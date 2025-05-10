@@ -1,6 +1,6 @@
 
 import { useState, useEffect, useRef } from 'react';
-import { Stethoscope, Mic, BookOpen, Scale, Building } from 'lucide-react';
+import { Stethoscope, Mic, BookOpen, Scale, Building, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const audienceData = [
   {
@@ -49,6 +49,14 @@ const TargetAudience = () => {
     setActiveIndex(index);
   };
   
+  const handlePrevClick = () => {
+    setActiveIndex((prev) => (prev - 1 + audienceData.length) % audienceData.length);
+  };
+  
+  const handleNextClick = () => {
+    setActiveIndex((prev) => (prev + 1) % audienceData.length);
+  };
+  
   return (
     <section className="py-20 bg-gray-50" id="publico-alvo">
       <div className="container mx-auto px-4">
@@ -92,6 +100,23 @@ const TargetAudience = () => {
               ) : null;
             })}
           </div>
+          
+          {/* Navigation Arrows */}
+          <button 
+            onClick={handlePrevClick}
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 bg-white hover:bg-gray-100 text-miniapp-primary rounded-full p-2 shadow-md z-10"
+            aria-label="Slide anterior"
+          >
+            <ChevronLeft size={24} />
+          </button>
+          
+          <button 
+            onClick={handleNextClick}
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 bg-white hover:bg-gray-100 text-miniapp-primary rounded-full p-2 shadow-md z-10"
+            aria-label="Próximo slide"
+          >
+            <ChevronRight size={24} />
+          </button>
           
           <div className="flex justify-center mt-8 gap-2">
             {audienceData.map((_, index) => (
