@@ -18,6 +18,12 @@ const testimonialsData = [
     avatar: "https://randomuser.me/api/portraits/men/32.jpg"
   },
   {
+    text: "O MiniApp-i revolucionou com A inteligência artificial e sugeriu um layout perfeito para minha especialidade médica.",
+    name: "Ricardo Mendes",
+    role: "Neuro",
+    avatar: "https://randomuser.me/api/portraits/men/32.jpg"
+  },
+  {
     text: "Como influencer, precisava de algo mais personalizado que o Linktree. O MiniApp-i me deu total liberdade criativa e as estatísticas me ajudam a entender melhor meu público.",
     name: "Luiza Campos",
     role: "Content Creator",
