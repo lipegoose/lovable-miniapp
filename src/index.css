@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -96,6 +97,112 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-inter;
   }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+.section-title {
+  @apply text-center mb-12;
+}
+
+.section-title h2 {
+  @apply text-3xl md:text-4xl font-bold text-miniapp-primary mb-4;
+}
+
+.section-title p {
+  @apply text-lg text-gray-600 max-w-3xl mx-auto;
+}
+
+.btn {
+  @apply inline-block bg-miniapp-primary text-white font-medium py-3 px-6 rounded-md hover:bg-opacity-90 transition-all duration-300;
+}
+
+header {
+  @apply fixed top-0 w-full z-50 bg-white transition-all duration-300 shadow-sm;
+}
+
+header.scrolled {
+  @apply shadow-md;
+}
+
+.nav-links {
+  @apply flex items-center gap-6;
+}
+
+@media (max-width: 1023px) {
+  .nav-links {
+    @apply fixed top-[70px] left-0 w-full bg-white flex-col p-5 shadow-lg transition-all duration-300 transform -translate-y-[150%] opacity-0;
+  }
+  
+  .nav-links.active {
+    @apply translate-y-0 opacity-100;
+  }
+}
+
+.step-icon {
+  @apply bg-miniapp-primary text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl mx-auto mb-4;
+}
+
+.accordion-item {
+  @apply border-b border-gray-200 overflow-hidden;
+}
+
+.accordion-header {
+  @apply flex justify-between items-center p-4 cursor-pointer bg-white hover:bg-gray-50 transition-all;
+}
+
+.accordion-content {
+  @apply max-h-0 overflow-hidden transition-all duration-300 ease-in-out;
+}
+
+.accordion-item.active .accordion-content {
+  @apply max-h-96;
+}
+
+.accordion-item.active .accordion-icon {
+  @apply rotate-180;
+}
+
+.check-icon {
+  @apply text-green-500;
+}
+
+.x-icon {
+  @apply text-red-500;
+}
+
+.pricing-card {
+  @apply bg-white rounded-lg shadow-lg p-6 border border-gray-200 transition-all hover:shadow-xl;
+}
+
+.pricing-card.featured {
+  @apply border-miniapp-primary border-2 transform -translate-y-4;
+}
+
+.testimonial-card {
+  @apply bg-white p-6 rounded-lg shadow-md;
+}
+
+.author-avatar {
+  @apply w-12 h-12 rounded-full object-cover;
+}
+
+.contact-method {
+  @apply flex items-center gap-2 text-miniapp-primary hover:underline;
+}
+
+.audience-item {
+  @apply p-6 bg-white rounded-lg shadow-md h-full;
+}
+
+.audience-icon {
+  @apply text-3xl text-miniapp-primary mb-4;
 }
