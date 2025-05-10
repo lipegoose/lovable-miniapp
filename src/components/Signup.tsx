@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Mail, Phone } from 'lucide-react';
 import { toast } from 'sonner';
@@ -110,6 +109,12 @@ const Signup = () => {
                 <button type="submit" className="btn w-full text-center">
                   Cadastrar
                 </button>
+                
+                <div className="mt-4 text-center">
+                  <a href="/login" className="btn-login w-full inline-block">
+                    Já tenho cadastro
+                  </a>
+                </div>
               </form>
               
               <div className="mt-8">

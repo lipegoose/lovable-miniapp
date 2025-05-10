@@ -229,6 +229,12 @@ header.scrolled {
   margin-left: 10px;
 }
 
+/* Ajustes quando o botão de login tem largura total */
+.btn-login.w-full {
+  margin-left: 0;
+  padding: 12px 30px;
+}
+
 .btn-login:hover {
   background-color: rgba(106, 17, 203, 0.1);
   transform: translateY(-2px);
