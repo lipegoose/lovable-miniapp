@@ -1,6 +1,14 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { Stethoscope, Mic, BookOpen, Scale, Building, ChevronLeft, ChevronRight } from 'lucide-react';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import type { CarouselApi } from "@/components/ui/carousel";
 
 const audienceData = [
   {
@@ -31,30 +39,61 @@ const audienceData = [
 ];
 
 const TargetAudience = () => {
+  const [api, setApi] = useState<CarouselApi>();
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const carouselRef = useRef<HTMLDivElement>(null);
+  const autoplayRef = useRef<NodeJS.Timeout | null>(null);
+  const [isHovering, setIsHovering] = useState(false);
   
+  // Controle do índice ativo
   useEffect(() => {
-    if (isPaused) return;
+    if (!api) return;
     
-    const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % audienceData.length);
-    }, 3000);
+    const handleSelect = () => {
+      setActiveIndex(api.selectedScrollSnap());
+    };
     
-    return () => clearInterval(interval);
-  }, [isPaused]);
+    api.on("select", handleSelect);
+    return () => {
+      api.off("select", handleSelect);
+    };
+  }, [api]);
   
-  const handleDotClick = (index: number) => {
-    setActiveIndex(index);
+  // Funcionalidade de autoplay
+  useEffect(() => {
+    if (!api) return;
+    
+    const startAutoplay = () => {
+      stopAutoplay();
+      autoplayRef.current = setInterval(() => {
+        api.scrollNext();
+      }, 3000);
+    };
+    
+    const stopAutoplay = () => {
+      if (autoplayRef.current) {
+        clearInterval(autoplayRef.current);
+        autoplayRef.current = null;
+      }
+    };
+    
+    // Apenas inicia o autoplay se não estiver com o mouse sobre o carrossel
+    if (!isHovering) {
+      startAutoplay();
+    } else {
+      stopAutoplay();
+    }
+    
+    return () => {
+      stopAutoplay();
+    };
+  }, [api, isHovering]);
+  
+  const handleMouseEnter = () => {
+    setIsHovering(true);
   };
   
-  const handlePrevClick = () => {
-    setActiveIndex((prev) => (prev - 1 + audienceData.length) % audienceData.length);
-  };
-  
-  const handleNextClick = () => {
-    setActiveIndex((prev) => (prev + 1) % audienceData.length);
+  const handleMouseLeave = () => {
+    setIsHovering(false);
   };
   
   return (
@@ -67,64 +106,52 @@ const TargetAudience = () => {
         
         <div 
           className="relative max-w-5xl mx-auto"
-          ref={carouselRef}
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
         >
-          <div className="grid md:grid-cols-3 gap-6">
-            {audienceData.map((item, index) => {
-              // In mobile, only show the active slide
-              // In desktop (md+), show current, previous and next
-              const shouldShow = 
-                window.innerWidth < 768
-                  ? index === activeIndex 
-                  : (
-                      index === activeIndex || 
-                      index === (activeIndex - 1 + audienceData.length) % audienceData.length ||
-                      index === (activeIndex + 1) % audienceData.length
-                    );
-              
-              return shouldShow ? (
-                <div
-                  key={index}
-                  className={`audience-item transition-all duration-300 ${
-                    index === activeIndex ? "opacity-100 scale-100" : "md:opacity-70 md:scale-95"
-                  }`}
+          <Carousel 
+            setApi={setApi}
+            className="mx-auto"
+            opts={{
+              align: "center",
+              loop: true,
+              skipSnaps: false,
+              containScroll: false,
+            }}
+          >
+            <CarouselContent>
+              {audienceData.map((item, index) => (
+                <CarouselItem 
+                  key={index} 
+                  className="md:basis-1/3 basis-full"
                 >
-                  <div className="audience-icon">
-                    {item.icon}
+                  <div className="audience-item">
+                    <div className="audience-icon">
+                      {item.icon}
+                    </div>
+                    <h3 className="text-xl font-semibold mb-3 text-miniapp-primary">{item.title}</h3>
+                    <p className="text-gray-600">{item.description}</p>
                   </div>
-                  <h3 className="text-xl font-semibold mb-3 text-miniapp-primary">{item.title}</h3>
-                  <p className="text-gray-600">{item.description}</p>
-                </div>
-              ) : null;
-            })}
-          </div>
-          
-          {/* Navigation Arrows */}
-          <button 
-            onClick={handlePrevClick}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 bg-white hover:bg-gray-100 text-miniapp-primary rounded-full p-2 shadow-md z-10"
-            aria-label="Slide anterior"
-          >
-            <ChevronLeft size={24} />
-          </button>
-          
-          <button 
-            onClick={handleNextClick}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 bg-white hover:bg-gray-100 text-miniapp-primary rounded-full p-2 shadow-md z-10"
-            aria-label="Próximo slide"
-          >
-            <ChevronRight size={24} />
-          </button>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            
+            <CarouselPrevious 
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 md:-translate-x-6 bg-white text-miniapp-primary z-10"
+            />
+            
+            <CarouselNext 
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 md:translate-x-6 bg-white text-miniapp-primary z-10"
+            />
+          </Carousel>
           
           <div className="flex justify-center mt-8 gap-2">
             {audienceData.map((_, index) => (
               <button
                 key={index}
-                onClick={() => handleDotClick(index)}
-                className={`w-3 h-3 rounded-full transition-all ${
-                  index === activeIndex ? "bg-miniapp-primary scale-125" : "bg-gray-300"
+                onClick={() => api?.scrollTo(index)}
+                className={`w-2 h-2 rounded-full transition-all ${
+                  index === activeIndex % audienceData.length ? "bg-miniapp-primary w-4" : "bg-gray-300"
                 }`}
                 aria-label={`Slide ${index + 1}`}
               />
