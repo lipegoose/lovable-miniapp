@@ -241,6 +241,41 @@ header.scrolled {
   color: var(--primary-dark);
 }
 
+/* Hero Section Styles */
+.hero {
+  padding: 172px 0 100px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e2e6f0 100%);
+  background-image: url('https://miniapp-i.com.br/img/banner-mai.png');
+  background-size: cover;
+  background-position: center 70px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: var(--primary-dark);
+  line-height: 1.2;
+}
+
+.hero-text p {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  color: var(--gray);
+}
+
+.hero-image img {
+  max-width: 100%;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
 @media (max-width: 1023px) {
   .nav-links {
     @apply fixed top-[70px] left-0 w-full bg-white flex-col p-5 shadow-lg transition-all duration-300 transform -translate-y-[150%] opacity-0;
