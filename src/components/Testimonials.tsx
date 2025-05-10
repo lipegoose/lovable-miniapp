@@ -1,5 +1,14 @@
 
+import { useState, useEffect, useRef } from 'react';
 import { Star } from 'lucide-react';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import type { CarouselApi } from "@/components/ui/carousel";
 
 const testimonialsData = [
   {
@@ -23,6 +32,63 @@ const testimonialsData = [
 ];
 
 const Testimonials = () => {
+  const [api, setApi] = useState<CarouselApi>();
+  const [activeIndex, setActiveIndex] = useState(0);
+  const autoplayRef = useRef<NodeJS.Timeout | null>(null);
+  const [isHovering, setIsHovering] = useState(false);
+  
+  // Controle do índice ativo
+  useEffect(() => {
+    if (!api) return;
+    
+    const handleSelect = () => {
+      setActiveIndex(api.selectedScrollSnap());
+    };
+    
+    api.on("select", handleSelect);
+    return () => {
+      api.off("select", handleSelect);
+    };
+  }, [api]);
+  
+  // Funcionalidade de autoplay
+  useEffect(() => {
+    if (!api) return;
+    
+    const startAutoplay = () => {
+      stopAutoplay();
+      autoplayRef.current = setInterval(() => {
+        api.scrollNext();
+      }, 3000);
+    };
+    
+    const stopAutoplay = () => {
+      if (autoplayRef.current) {
+        clearInterval(autoplayRef.current);
+        autoplayRef.current = null;
+      }
+    };
+    
+    // Apenas inicia o autoplay se não estiver com o mouse sobre o carrossel
+    if (!isHovering) {
+      startAutoplay();
+    } else {
+      stopAutoplay();
+    }
+    
+    return () => {
+      stopAutoplay();
+    };
+  }, [api, isHovering]);
+  
+  const handleMouseEnter = () => {
+    setIsHovering(true);
+  };
+  
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+  };
+
   return (
     <section className="py-20 bg-gray-50">
       <div className="container mx-auto px-4">
@@ -31,30 +97,73 @@ const Testimonials = () => {
           <p>Confira a experiência de quem já utiliza o MiniApp-i para impulsionar sua presença digital.</p>
         </div>
         
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {testimonialsData.map((testimonial, index) => (
-            <div key={index} className="testimonial-card flex flex-col">
-              <div className="flex mb-4">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <Star key={star} size={18} className="text-yellow-400 fill-yellow-400" />
-                ))}
-              </div>
-              
-              <p className="text-gray-700 mb-6 flex-grow">"{testimonial.text}"</p>
-              
-              <div className="flex items-center mt-auto">
-                <img
-                  src={testimonial.avatar}
-                  alt={testimonial.name}
-                  className="w-12 h-12 rounded-full object-cover mr-4"
-                />
-                <div>
-                  <h4 className="font-semibold text-miniapp-primary">{testimonial.name}</h4>
-                  <p className="text-sm text-gray-600">{testimonial.role}</p>
-                </div>
-              </div>
-            </div>
-          ))}
+        <div 
+          className="relative max-w-6xl mx-auto"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          <Carousel 
+            setApi={setApi}
+            className="mx-auto"
+            opts={{
+              align: "center",
+              loop: true,
+              skipSnaps: false,
+              containScroll: false,
+            }}
+          >
+            <CarouselContent>
+              {testimonialsData.map((testimonial, index) => (
+                <CarouselItem 
+                  key={index} 
+                  className="md:basis-1/3 basis-full"
+                >
+                  <div className="testimonial-card h-full">
+                    <div className="flex mb-4">
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <Star key={star} size={18} className="text-yellow-400 fill-yellow-400" />
+                      ))}
+                    </div>
+                    
+                    <p className="text-gray-700 mb-6 flex-grow">"{testimonial.text}"</p>
+                    
+                    <div className="flex items-center mt-auto">
+                      <img
+                        src={testimonial.avatar}
+                        alt={testimonial.name}
+                        className="w-12 h-12 rounded-full object-cover mr-4"
+                      />
+                      <div>
+                        <h4 className="font-semibold text-miniapp-primary">{testimonial.name}</h4>
+                        <p className="text-sm text-gray-600">{testimonial.role}</p>
+                      </div>
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            
+            <CarouselPrevious 
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 md:-translate-x-6 bg-white text-miniapp-primary z-10"
+            />
+            
+            <CarouselNext 
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 md:translate-x-6 bg-white text-miniapp-primary z-10"
+            />
+          </Carousel>
+          
+          <div className="flex justify-center mt-8 gap-2">
+            {testimonialsData.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => api?.scrollTo(index)}
+                className={`w-2 h-2 rounded-full transition-all ${
+                  index === activeIndex % testimonialsData.length ? "bg-miniapp-primary w-4" : "bg-gray-300"
+                }`}
+                aria-label={`Testimonial ${index + 1}`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
