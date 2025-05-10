@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -126,18 +127,10 @@ body {
 
 header {
   @apply fixed top-0 w-full z-50 bg-white transition-all duration-300 shadow-sm;
-  height: 80px; /* Altura fixa do header */
 }
 
 header.scrolled {
   @apply shadow-md;
-}
-
-.logo {
-  max-height: 67px;
-  max-width: 119.8px;
-  position: absolute;
-  top: 5px;
 }
 
 .nav-links {
