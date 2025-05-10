@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 
@@ -26,10 +25,12 @@ const Navigation = () => {
   return (
     <header className={`${isScrolled ? 'scrolled' : ''}`}>
       <div className="container mx-auto px-4">
-        <nav className="flex justify-between items-center py-4">
-          <a href="#" className="logo-link">
-            <h1 className="text-2xl font-bold text-miniapp-primary">MiniApp-i</h1>
-          </a>
+        <nav className="flex justify-between items-center h-[80px]">
+          <div className="w-[120px]">
+            <a href="#" className="logo-link">
+              <img src="/img/logo_miniapp-i_semfundo.png" alt="MiniApp-i" className="logo" />
+            </a>
+          </div>
           <button
             className="block lg:hidden text-miniapp-primary"
             onClick={handleMobileMenuToggle}

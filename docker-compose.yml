@@ -9,8 +9,11 @@ services:
       - "8080:8080"
     volumes:
       - ./:/app
-      - /app/node_modules
+      - node_modules:/app/node_modules
     environment:
       - NODE_ENV=development
       - CHOKIDAR_USEPOLLING=true
-    restart: unless-stopped 
+    restart: unless-stopped
+
+volumes:
+  node_modules: 
