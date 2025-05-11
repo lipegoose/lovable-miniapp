@@ -10,15 +10,12 @@ const Pricing = () => {
           <p>Escolha o plano ideal para suas necessidades e comece a usar o MiniApp-i hoje mesmo.</p>
         </div>
         
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          <div className="pricing-card flex flex-col">
-            <h3 className="text-xl font-bold mb-4 text-miniapp-primary">Atualização Avulsa</h3>
-            <div className="mb-6">
-              <span className="text-4xl font-bold">R$ 99</span>
-              <span className="text-gray-500">/único</span>
-            </div>
+        <div className="pricing-cards">
+          <div className="pricing-card">
+            <h3 className="pricing-title">Atualização Avulsa</h3>
+            <div className="pricing-price">R$ 99<span className="pricing-period">/único</span></div>
             
-            <ul className="mb-8 space-y-3 flex-grow">
+            <ul className="pricing-features">
               {[
                 "Criação do seu MiniApp",
                 "1 atualização incluída",
@@ -26,29 +23,18 @@ const Pricing = () => {
                 "Suporte por 30 dias",
                 "Estatísticas básicas"
               ].map((feature, index) => (
-                <li key={index} className="flex items-center">
-                  <span className="flex items-center justify-center w-5 h-5 rounded-full bg-green-100 mr-2">
-                    <Check size={12} className="text-green-600" />
-                  </span>
-                  {feature}
-                </li>
+                <li key={index}>{feature}</li>
               ))}
             </ul>
             
-            <a href="#cadastro" className="btn w-full text-center">Quero esse plano</a>
+            <a href="#cadastro" className="btn pricing-btn">Quero esse plano</a>
           </div>
           
-          <div className="pricing-card featured flex flex-col">
-            <div className="absolute top-0 right-0 bg-miniapp-primary text-white text-xs px-3 py-1 rounded-bl-lg rounded-tr-lg">
-              Popular
-            </div>
-            <h3 className="text-xl font-bold mb-4 text-miniapp-primary">Atualização Instantânea</h3>
-            <div className="mb-6">
-              <span className="text-4xl font-bold">R$ 49</span>
-              <span className="text-gray-500">/mês</span>
-            </div>
+          <div className="pricing-card featured">
+            <h3 className="pricing-title">Atualização Instantânea</h3>
+            <div className="pricing-price">R$ 49<span className="pricing-period">/mês</span></div>
             
-            <ul className="mb-8 space-y-3 flex-grow">
+            <ul className="pricing-features">
               {[
                 "Atualizações ilimitadas",
                 "Domínio personalizado",
@@ -57,16 +43,11 @@ const Pricing = () => {
                 "Recursos de IA premium",
                 "Integração com redes sociais"
               ].map((feature, index) => (
-                <li key={index} className="flex items-center">
-                  <span className="flex items-center justify-center w-5 h-5 rounded-full bg-green-100 mr-2">
-                    <Check size={12} className="text-green-600" />
-                  </span>
-                  {feature}
-                </li>
+                <li key={index}>{feature}</li>
               ))}
             </ul>
             
-            <a href="#cadastro" className="btn w-full text-center bg-miniapp-secondary">Quero esse plano</a>
+            <a href="#cadastro" className="btn pricing-btn">Quero esse plano</a>
           </div>
         </div>
       </div>
