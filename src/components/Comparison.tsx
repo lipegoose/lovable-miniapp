@@ -31,39 +31,35 @@ const comparisonData = [
 
 const Comparison = () => {
   return (
-    <section className="py-20 bg-gray-50" id="comparativo">
+    <section className="comparison py-20 bg-gray-50" id="comparativo">
       <div className="container mx-auto px-4">
         <div className="section-title">
           <h2>MiniApp-i vs Linktree</h2>
           <p>Descubra por que o MiniApp-i é a escolha ideal para seu cartão digital interativo.</p>
         </div>
         
-        <div className="overflow-x-auto">
-          <table className="w-full max-w-4xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+        <div className="overflow-x-auto" style={{ padding: '0 10px 12px' }}>
+          <table className="comparison-table">
             <thead>
-              <tr className="bg-miniapp-primary text-white">
-                <th className="py-4 px-6 text-left">Recursos</th>
-                <th className="py-4 px-6 text-left">MiniApp-i</th>
-                <th className="py-4 px-6 text-left">Linktree</th>
+              <tr>
+                <th>Recursos</th>
+                <th>MiniApp-i</th>
+                <th>Linktree</th>
               </tr>
             </thead>
             <tbody>
               {comparisonData.map((item, index) => (
-                <tr key={index} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                  <td className="py-4 px-6 font-medium">{item.feature}</td>
-                  <td className="py-4 px-6">
+                <tr key={index}>
+                  <td className="feature-name">{item.feature}</td>
+                  <td>
                     <div className="flex items-center">
-                      <span className="flex items-center justify-center w-6 h-6 rounded-full bg-green-100 mr-2">
-                        <Check size={14} className="text-green-600" />
-                      </span>
+                      <Check className="check-icon mr-2" />
                       {item.miniapp.description}
                     </div>
                   </td>
-                  <td className="py-4 px-6">
+                  <td>
                     <div className="flex items-center">
-                      <span className="flex items-center justify-center w-6 h-6 rounded-full bg-red-100 mr-2">
-                        <X size={14} className="text-red-600" />
-                      </span>
+                      <X className="x-icon mr-2" />
                       {item.competitor.description}
                     </div>
                   </td>
