@@ -133,7 +133,7 @@ const Examples = () => {
                   <div 
                     className={`transition-all duration-300 flex flex-col items-center px-4 ${
                       index === activeIndex % examplesData.length 
-                        ? "scale-110 opacity-100" 
+                        ? "scale-110 opacity-100 py-7" /* Adicionamos py-7 (28px de padding) no card ativo */
                         : "scale-90 opacity-60"
                     }`}
                   >
