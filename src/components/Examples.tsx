@@ -153,12 +153,13 @@ const Examples = () => {
               ))}
             </CarouselContent>
             
+            {/* Modificamos o posicionamento dos botões para ficarem nas laterais do carrossel */}
             <CarouselPrevious 
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 md:-translate-x-6 bg-white text-miniapp-primary z-10"
+              className="absolute left-0 top-1/2 -translate-y-1/2 bg-white text-miniapp-primary z-10 shadow-md ml-2" 
             />
             
             <CarouselNext 
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 md:translate-x-6 bg-white text-miniapp-primary z-10"
+              className="absolute right-0 top-1/2 -translate-y-1/2 bg-white text-miniapp-primary z-10 shadow-md mr-2" 
             />
           </Carousel>
           
