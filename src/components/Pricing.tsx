@@ -10,12 +10,12 @@ const Pricing = () => {
           <p>Escolha o plano ideal para suas necessidades e comece a usar o MiniApp-i hoje mesmo.</p>
         </div>
         
-        <div className="pricing-cards">
-          <div className="pricing-card">
-            <h3 className="pricing-title">Atualização Avulsa</h3>
-            <div className="pricing-price">R$ 99<span className="pricing-period">/único</span></div>
+        <div className="flex justify-center gap-8 mt-12">
+          <div className="flex-1 max-w-sm bg-gray-100 rounded-lg p-10 text-center transition-all duration-300 hover:shadow-lg hover:-translate-y-2.5 relative overflow-hidden">
+            <h3 className="text-2xl font-semibold mb-4">Atualização Avulsa</h3>
+            <div className="text-4xl font-bold mb-5">R$ 99<span className="text-sm font-normal text-gray-600">/único</span></div>
             
-            <ul className="pricing-features">
+            <ul className="list-none my-8 text-left">
               {[
                 "Criação do seu MiniApp",
                 "1 atualização incluída",
@@ -23,7 +23,7 @@ const Pricing = () => {
                 "Suporte por 30 dias",
                 "Estatísticas básicas"
               ].map((feature, index) => (
-                <li key={index}>
+                <li key={index} className="mb-4">
                   <span className="flex items-center">
                     <Check className="w-5 h-5 mr-2 text-green-500" />
                     {feature}
@@ -32,15 +32,15 @@ const Pricing = () => {
               ))}
             </ul>
             
-            <a href="#cadastro" className="btn pricing-btn">Quero esse plano</a>
+            <a href="#cadastro" className="block w-full bg-miniapp-primary text-white py-3 px-4 rounded hover:bg-miniapp-secondary transition-colors">Quero esse plano</a>
           </div>
           
-          <div className="pricing-card featured">
-            <div className="popular-badge">Popular</div>
-            <h3 className="pricing-title">Atualização Instantânea</h3>
-            <div className="pricing-price">R$ 49<span className="pricing-period">/mês</span></div>
+          <div className="flex-1 max-w-sm bg-gradient-to-br from-miniapp-primary to-miniapp-secondary text-white rounded-lg p-10 text-center transition-all duration-300 hover:shadow-lg hover:-translate-y-2.5 relative overflow-hidden">
+            <div className="absolute top-5 right-[-30px] bg-green-500 text-white px-8 py-1 text-xs font-semibold transform rotate-45">Popular</div>
+            <h3 className="text-2xl font-semibold mb-4">Atualização Instantânea</h3>
+            <div className="text-4xl font-bold mb-5">R$ 49<span className="text-sm font-normal text-white/80">/mês</span></div>
             
-            <ul className="pricing-features">
+            <ul className="list-none my-8 text-left">
               {[
                 "Atualizações ilimitadas",
                 "Domínio personalizado",
@@ -49,108 +49,19 @@ const Pricing = () => {
                 "Recursos de IA premium",
                 "Integração com redes sociais"
               ].map((feature, index) => (
-                <li key={index}>
+                <li key={index} className="mb-4">
                   <span className="flex items-center">
-                    <Check className="w-5 h-5 mr-2 text-green-500" />
+                    <Check className="w-5 h-5 mr-2 text-white" />
                     {feature}
                   </span>
                 </li>
               ))}
             </ul>
             
-            <a href="#cadastro" className="btn pricing-btn">Quero esse plano</a>
+            <a href="#cadastro" className="block w-full bg-white text-miniapp-primary py-3 px-4 rounded hover:bg-white/90 transition-colors">Quero esse plano</a>
           </div>
         </div>
       </div>
-      <style jsx>{`
-        .pricing-cards {
-          display: flex;
-          justify-content: center;
-          gap: 30px;
-          margin-top: 50px;
-        }
-        
-        .pricing-card {
-          flex: 1;
-          max-width: 350px;
-          background-color: var(--light-gray);
-          border-radius: var(--border-radius);
-          padding: 40px 30px;
-          text-align: center;
-          transition: var(--transition);
-          position: relative;
-          overflow: hidden;
-        }
-        
-        .pricing-card:hover {
-          transform: translateY(-10px);
-          box-shadow: var(--box-shadow);
-        }
-        
-        .pricing-card.featured {
-          background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-          color: var(--white);
-          box-shadow: 0 10px 30px rgba(106, 17, 203, 0.3);
-        }
-        
-        .popular-badge {
-          position: absolute;
-          top: 15px;
-          right: -30px;
-          background-color: var(--success);
-          color: var(--white);
-          padding: 5px 30px;
-          font-size: 0.8rem;
-          transform: rotate(45deg);
-        }
-        
-        .pricing-title {
-          font-size: 1.5rem;
-          margin-bottom: 15px;
-        }
-        
-        .pricing-price {
-          font-size: 2.5rem;
-          font-weight: 700;
-          margin-bottom: 20px;
-        }
-        
-        .pricing-period {
-          font-size: 0.9rem;
-          color: var(--gray);
-        }
-        
-        .featured .pricing-period {
-          color: rgba(255, 255, 255, 0.8);
-        }
-        
-        .pricing-features {
-          list-style: none;
-          margin: 30px 0;
-          text-align: left;
-        }
-        
-        .pricing-features li {
-          margin-bottom: 15px;
-        }
-        
-        .featured .pricing-features li svg {
-          color: var(--white);
-        }
-        
-        .pricing-btn {
-          width: 100%;
-        }
-        
-        .featured .btn {
-          background: var(--white);
-          color: var(--primary);
-        }
-        
-        .featured .btn:hover {
-          background: rgba(255, 255, 255, 0.9);
-        }
-      `}</style>
     </section>
   );
 };
