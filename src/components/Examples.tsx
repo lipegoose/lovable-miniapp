@@ -105,7 +105,7 @@ const Examples = () => {
         </div>
         
         <div 
-          className="max-w-5xl mx-auto relative"
+          className="max-w-5xl mx-auto relative min-h-[615px]"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
