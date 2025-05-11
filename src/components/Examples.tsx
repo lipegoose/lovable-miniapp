@@ -12,27 +12,27 @@ import type { CarouselApi } from "@/components/ui/carousel";
 
 const examplesData = [
   {
-    image: "https://placehold.co/300x500/294158/FFFFFF/png?text=Ricardo+Souza",
+    image: "https://miniapp-i.com.br/cards/01.png",
     name: "Ricardo Souza",
     profession: "Engenheiro Civil"
   },
   {
-    image: "https://placehold.co/300x500/1E88E5/FFFFFF/png?text=Carolina+Alves",
+    image: "https://miniapp-i.com.br/cards/02.png",
     name: "Carolina Alves",
     profession: "Baby Sitter"
   },
   {
-    image: "https://placehold.co/300x500/42A5F5/FFFFFF/png?text=Priscila+Fonseca",
+    image: "https://miniapp-i.com.br/cards/03.png",
     name: "Priscila Fonseca",
     profession: "Psicóloga"
   },
   {
-    image: "https://placehold.co/300x500/e91e63/FFFFFF/png?text=Mariana+Melo",
+    image: "https://miniapp-i.com.br/cards/04.png",
     name: "Mariana Melo",
     profession: "Nails Designer"
   },
   {
-    image: "https://placehold.co/300x500/ff9800/FFFFFF/png?text=Larisse+Lopes",
+    image: "https://miniapp-i.com.br/cards/06.png",
     name: "Larisse Lopes",
     profession: "Personal Web"
   }
@@ -99,14 +99,9 @@ const Examples = () => {
   return (
     <section className="py-20 bg-white" id="exemplos">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-miniapp-primary mb-4">Exemplos</h2>
-          <h3 className="text-xl text-gray-700">
-            Já são mais de 1400 Mídias produzidas para todo o Brasil. Não perca mais tempo e{" "}
-            <a href="#cadastro" className="text-miniapp-primary hover:underline">
-              faça seu cadastro.
-            </a>
-          </h3>
+        <div className="section-title">
+          <h2>Exemplos Reais</h2>
+          <p>Veja como profissionais de diferentes áreas estão utilizando o MiniApp-i para impulsionar sua presença digital.</p>
         </div>
         
         <div 
@@ -146,7 +141,18 @@ const Examples = () => {
                       <div className="mt-4 text-center flex items-center justify-center">
                         {/* Botão de navegação anterior à esquerda do texto */}
                         <CarouselPrevious 
-                          className="relative static mx-2 bg-white text-miniapp-primary shadow-md" 
+                          className="relative static mx-2 z-10"
+                          variant="outline"
+                          style={{
+                            backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                            color: 'var(--primary)',
+                            border: 'none',
+                            boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
+                            width: '40px',
+                            height: '40px',
+                            transition: 'color 0.3s ease, background-color 0.3s ease',
+                            margin: '12px 12px 0 0',
+                          }}
                         />
                         
                         <div>
@@ -156,7 +162,18 @@ const Examples = () => {
                         
                         {/* Botão de navegação posterior à direita do texto */}
                         <CarouselNext 
-                          className="relative static mx-2 bg-white text-miniapp-primary shadow-md" 
+                          className="relative static mx-2 z-10"
+                          variant="outline"
+                          style={{
+                            backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                            color: 'var(--primary)',
+                            border: 'none',
+                            boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
+                            width: '40px',
+                            height: '40px',
+                            transition: 'color 0.3s ease, background-color 0.3s ease',
+                            margin: '12px 0 0 12px',
+                          }}
                         />
                       </div>
                     )}
@@ -166,7 +183,7 @@ const Examples = () => {
             </CarouselContent>
           </Carousel>
           
-          <div className="flex justify-center mt-4 gap-2">
+          <div className="flex justify-center mt-8 gap-2">
             {examplesData.map((_, index) => (
               <button
                 key={index}
