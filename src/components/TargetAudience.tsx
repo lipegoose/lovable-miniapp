@@ -41,7 +41,7 @@ const audienceData = [
 const TargetAudience = () => {
   const [api, setApi] = useState<CarouselApi>();
   const [activeIndex, setActiveIndex] = useState(0);
-  const autoplayRef = useRef<NodeJS.Timeout | null>(null);
+  const autoplayRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [isHovering, setIsHovering] = useState(false);
   
   // Controle do índice ativo
@@ -137,11 +137,31 @@ const TargetAudience = () => {
             </CarouselContent>
             
             <CarouselPrevious 
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 md:-translate-x-6 bg-white text-miniapp-primary z-10"
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 md:-translate-x-6 z-10 carousel-nav-button"
+              variant="outline"
+              style={{
+                backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                color: 'var(--primary)',
+                border: 'none',
+                boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
+                transition: 'all 0.3s ease',
+                width: '40px',
+                height: '40px'
+              }}
             />
             
             <CarouselNext 
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 md:translate-x-6 bg-white text-miniapp-primary z-10"
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 md:translate-x-6 z-10 carousel-nav-button"
+              variant="outline"
+              style={{
+                backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                color: 'var(--primary)',
+                border: 'none',
+                boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
+                transition: 'all 0.3s ease',
+                width: '40px',
+                height: '40px'
+              }}
             />
           </Carousel>
           

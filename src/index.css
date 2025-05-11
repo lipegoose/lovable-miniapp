@@ -370,6 +370,9 @@ header.scrolled {
   box-shadow: var(--box-shadow);
   height: 100%;
   width: 100%;
+  margin: 45px auto;
+  max-height: 350px;
+  max-width: 267px;
 }
 
 .audience-item:hover {
@@ -389,10 +392,17 @@ header.scrolled {
   border-radius: 50%;
 }
 
+.audience-icon svg {
+  color: var(--primary);
+  width: 40px;
+  height: 40px;
+}
+
 .audience-item h3 {
   font-size: 1.3rem;
   margin-bottom: 15px;
   color: var(--primary-dark);
+  font-weight: bold;
 }
 
 .audience-item p {
@@ -402,22 +412,22 @@ header.scrolled {
 }
 
 /* Carousel Navigation */
-[data-carousel-button-prev],
-[data-carousel-button-next] {
-  color: var(--primary);
-  background-color: rgba(255, 255, 255, 0.9);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+.carousel-nav-button:hover {
+  background-color: var(--primary) !important;
+  color: white !important;
+  transform: scale(1.1) !important;
+}
+
+/* Carousel Pagination */
+.flex.justify-center.mt-8.gap-2 button {
+  background-color: var(--primary);
+  opacity: 0.5;
   transition: var(--transition);
 }
 
-[data-carousel-button-prev]:hover,
-[data-carousel-button-next]:hover {
-  background-color: var(--primary);
-  color: white;
-  transform: scale(1.1);
+.flex.justify-center.mt-8.gap-2 button.bg-miniapp-primary {
+  opacity: 1;
+  transform: scale(1.2);
 }
 
 @media (max-width: 1023px) {
