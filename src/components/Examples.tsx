@@ -183,14 +183,17 @@ const Examples = () => {
           </Carousel>
           
           {/* Fixando a posição dos indicadores de navegação com absolute positioning */}
-          <div className="absolute bottom-0 left-0 right-0 h-16 flex justify-center items-center">
+          <div className="absolute bottom-0 left-0 right-0 h-16 flex justify-center items-center gap-2">
             {examplesData.map((_, index) => (
               <button
                 key={index}
                 onClick={() => api?.scrollTo(index)}
                 className={`w-2 h-2 rounded-full transition-all ${
-                  index === activeIndex % examplesData.length ? "bg-miniapp-primary w-4" : "bg-gray-300"
+                  index === activeIndex % examplesData.length ? "w-4" : "bg-gray-300"
                 }`}
+                style={{
+                  backgroundColor: index === activeIndex % examplesData.length ? 'var(--primary)' : '',
+                }}
                 aria-label={`Example ${index + 1}`}
               />
             ))}
