@@ -18,37 +18,38 @@
   --transition: all 0.3s ease;
 }
 
+/* Variáveis do shadcn/ui - renomeadas para evitar conflitos */
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --ui-background: 0 0% 100%;
+    --ui-foreground: 222.2 84% 4.9%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --ui-card: 0 0% 100%;
+    --ui-card-foreground: 222.2 84% 4.9%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --ui-popover: 0 0% 100%;
+    --ui-popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --ui-primary: 222.2 47.4% 11.2%;
+    --ui-primary-foreground: 210 40% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --ui-secondary: 210 40% 96.1%;
+    --ui-secondary-foreground: 222.2 47.4% 11.2%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --ui-muted: 210 40% 96.1%;
+    --ui-muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --ui-accent: 210 40% 96.1%;
+    --ui-accent-foreground: 222.2 47.4% 11.2%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --ui-destructive: 0 84.2% 60.2%;
+    --ui-destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ui-border: 214.3 31.8% 91.4%;
+    --ui-input: 214.3 31.8% 91.4%;
+    --ui-ring: 222.2 84% 4.9%;
 
-    --radius: 0.5rem;
+    --ui-radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
 
