@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from 'react';
 import {
   Carousel,
@@ -183,7 +182,8 @@ const Examples = () => {
             </CarouselContent>
           </Carousel>
           
-          <div className="flex justify-center mt-8 gap-2">
+          {/* Fixando a posição dos indicadores de navegação com absolute positioning */}
+          <div className="absolute bottom-0 left-0 right-0 h-16 flex justify-center items-center">
             {examplesData.map((_, index) => (
               <button
                 key={index}
