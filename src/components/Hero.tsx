@@ -21,7 +21,7 @@ const Hero = () => {
           <div className="hero-image lg:w-1/2">
             <div className="relative">
               <img
-                src="https://miniapp-i.com.br/img/mockup1.png"
+                src="https://miniapp-i.com.br/img/mockup2.png"
                 alt="MiniApp-i Preview"
                 className="max-w-full"
               />
