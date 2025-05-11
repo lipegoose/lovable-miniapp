@@ -133,7 +133,7 @@ const Examples = () => {
                   <div 
                     className={`transition-all duration-300 flex flex-col items-center px-4 ${
                       index === activeIndex % examplesData.length 
-                        ? "scale-110 opacity-100 py-7" /* Adicionamos py-7 (28px de padding) no card ativo */
+                        ? "scale-110 opacity-100 py-7" 
                         : "scale-90 opacity-60"
                     }`}
                   >
@@ -143,24 +143,27 @@ const Examples = () => {
                       className="h-[450px] w-auto object-cover rounded-lg shadow-lg"
                     />
                     {index === activeIndex % examplesData.length && (
-                      <div className="mt-4 text-center">
-                        <h4 className="font-semibold text-lg">{example.name}</h4>
-                        <p className="text-gray-600">{example.profession}</p>
+                      <div className="mt-4 text-center flex items-center justify-center">
+                        {/* Botão de navegação anterior à esquerda do texto */}
+                        <CarouselPrevious 
+                          className="relative static mx-2 bg-white text-miniapp-primary shadow-md" 
+                        />
+                        
+                        <div>
+                          <h4 className="font-semibold text-lg">{example.name}</h4>
+                          <p className="text-gray-600">{example.profession}</p>
+                        </div>
+                        
+                        {/* Botão de navegação posterior à direita do texto */}
+                        <CarouselNext 
+                          className="relative static mx-2 bg-white text-miniapp-primary shadow-md" 
+                        />
                       </div>
                     )}
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
-            
-            {/* Modificamos o posicionamento dos botões para ficarem nas laterais do carrossel */}
-            <CarouselPrevious 
-              className="absolute left-0 top-1/2 -translate-y-1/2 bg-white text-miniapp-primary z-10 shadow-md ml-2" 
-            />
-            
-            <CarouselNext 
-              className="absolute right-0 top-1/2 -translate-y-1/2 bg-white text-miniapp-primary z-10 shadow-md mr-2" 
-            />
           </Carousel>
           
           <div className="flex justify-center mt-4 gap-2">
