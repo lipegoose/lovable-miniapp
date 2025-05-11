@@ -244,7 +244,7 @@ header.scrolled {
 
 /* Hero Section Styles */
 .hero {
-  padding: 172px 0 100px;
+  padding: 128px 0 10px;
   background: linear-gradient(135deg, #f5f7fa 0%, #e2e6f0 100%);
   background-image: url('https://miniapp-i.com.br/img/banner-mai.png');
   background-size: cover;
@@ -256,6 +256,7 @@ header.scrolled {
 .hero-text h1 {
   font-size: 3rem;
   margin-bottom: 20px;
+  margin-top: -250px;
   color: var(--primary-dark);
   line-height: 1.2;
 }
