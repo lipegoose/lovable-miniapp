@@ -137,30 +137,30 @@ const TargetAudience = () => {
             </CarouselContent>
             
             <CarouselPrevious 
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 md:-translate-x-6 z-10 carousel-nav-button"
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 md:-translate-x-6 z-10"
               variant="outline"
               style={{
                 backgroundColor: 'rgba(255, 255, 255, 0.9)',
                 color: 'var(--primary)',
                 border: 'none',
                 boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
-                transition: 'all 0.3s ease',
                 width: '40px',
-                height: '40px'
+                height: '40px',
+                transition: 'color 0.3s ease, background-color 0.3s ease',
               }}
             />
             
             <CarouselNext 
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 md:translate-x-6 z-10 carousel-nav-button"
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 md:translate-x-6 z-10"
               variant="outline"
               style={{
                 backgroundColor: 'rgba(255, 255, 255, 0.9)',
                 color: 'var(--primary)',
                 border: 'none',
                 boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
-                transition: 'all 0.3s ease',
                 width: '40px',
-                height: '40px'
+                height: '40px',
+                transition: 'color 0.3s ease, background-color 0.3s ease',
               }}
             />
           </Carousel>

@@ -411,11 +411,15 @@ header.scrolled {
   line-height: 1.6;
 }
 
-/* Carousel Navigation */
-.carousel-nav-button:hover {
+/* Carousel Navigation Buttons - Corrigido para não mover ao fazer hover */
+.Carousel button:hover {
   background-color: var(--primary) !important;
   color: white !important;
-  transform: scale(1.1) !important;
+}
+
+/* Override para prevenir movimento dos botões de navegação ao fazer hover */
+.Carousel button {
+  transform: none !important;
 }
 
 /* Carousel Pagination */
