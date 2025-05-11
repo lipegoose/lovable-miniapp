@@ -10,6 +10,14 @@ export default defineConfig(({ mode }) => ({
     port: 8080,
   },
   publicDir: "public_html",
+  // Define a base path para produção (vazio para caminho raiz)
+  base: mode === 'production' ? '/' : '/',
+  build: {
+    // Configurações de build
+    outDir: 'dist',
+    emptyOutDir: true,
+    sourcemap: false,
+  },
   plugins: [
     react(),
     mode === 'development' &&

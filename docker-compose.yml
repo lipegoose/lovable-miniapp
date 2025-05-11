@@ -10,7 +10,8 @@ services:
     volumes:
       - ./:/app
       - /app/node_modules
+      - ./dist-prod:/app/dist-prod
     environment:
       - NODE_ENV=development
       - CHOKIDAR_USEPOLLING=true
-    restart: unless-stopped 
+    restart: unless-stopped
