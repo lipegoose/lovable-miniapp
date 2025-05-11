@@ -33,35 +33,36 @@ const FAQ = () => {
   };
   
   return (
-    <section className="py-20 bg-white" id="faq">
+    <section className="py-20" id="faq" style={{ backgroundColor: "var(--light-gray)" }}>
       <div className="container mx-auto px-4">
         <div className="section-title">
           <h2>Perguntas Frequentes</h2>
           <p>Tire suas dúvidas sobre o MiniApp-i e descubra como ele pode ajudar você ou sua empresa.</p>
         </div>
         
-        <div className="max-w-3xl mx-auto">
+        <div className="w-full mx-auto mt-12">
           {faqData.map((item, index) => (
             <div 
               key={index} 
-              className={`border-b border-gray-200 ${activeIndex === index ? 'bg-gray-50' : ''}`}
+              className={`mb-4 rounded-lg overflow-hidden shadow-md bg-white ${activeIndex === index ? 'active' : ''}`}
             >
               <button
-                className="w-full py-4 px-6 flex justify-between items-center text-left focus:outline-none"
+                className="w-full py-5 px-6 flex justify-between items-center text-left focus:outline-none font-semibold hover:bg-purple-50 transition-all"
                 onClick={() => toggleAccordion(index)}
                 aria-expanded={activeIndex === index}
               >
-                <h3 className="font-medium text-lg text-miniapp-primary">{item.question}</h3>
+                <h3 className="font-semibold text-lg">{item.question}</h3>
                 <ChevronDown 
                   className={`transition-transform duration-200 ${activeIndex === index ? 'transform rotate-180' : ''}`} 
                   size={20} 
+                  style={{ color: activeIndex === index ? 'var(--primary)' : 'currentColor' }}
                 />
               </button>
               <div 
                 className={`overflow-hidden transition-all duration-300 ${activeIndex === index ? 'max-h-96' : 'max-h-0'}`}
               >
-                <div className="p-6 pt-0">
-                  <p className="text-gray-700">{item.answer}</p>
+                <div className="px-6 pb-6">
+                  <p className="text-gray-600">{item.answer}</p>
                 </div>
               </div>
             </div>
