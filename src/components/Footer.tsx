@@ -61,7 +61,7 @@ const Footer = () => {
         </div>
         
         <div className="footer-bottom border-t border-gray-200 pt-6 text-center">
-          <p className="text-gray-500">&copy; 2025 MiniApp-i. Todos os direitos reservados. Uma criação <a href="https://hera-i.com.br/" className="text-gray-600 hover:text-purple-600 hover:font-bold transition-all" target="_blank" rel="noopener noreferrer">HeRa-i</a>.</p>
+          <p className="text-gray-500">&copy; 2025 MiniApp-i. Todos os direitos reservados. Uma criação <a href="https://hera-i.com.br/" className="inline-flex items-center" target="_blank" rel="noopener noreferrer" title="HeRa-i"><img src="https://hera-i.com.br/imgs/logo.png" alt="HeRa-i" className="h-5 hover:opacity-80 transition-opacity" /></a>.</p>
         </div>
       </div>
     </footer>
