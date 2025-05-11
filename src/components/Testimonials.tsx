@@ -71,7 +71,7 @@ const Testimonials = () => {
       stopAutoplay();
       autoplayRef.current = setInterval(() => {
         api.scrollNext();
-      }, 5000); // Intervalo maior (5 segundos) para ser menos intrusivo
+      }, 7000); // Intervalo maior (7 segundos) para ser menos intrusivo
     };
     
     const stopAutoplay = () => {
@@ -102,11 +102,11 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20" style={{ background: "linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%)", color: "var(--white)" }}>
       <div className="container mx-auto px-4">
         <div className="section-title">
-          <h2>O que nossos clientes dizem</h2>
-          <p>Confira a experiência de quem já utiliza o MiniApp-i para impulsionar sua presença digital.</p>
+          <h2 className="text-white" style={{ color: "var(--white)" }}>O que nossos clientes dizem</h2>
+          <p className="text-white" style={{ color: "var(--white)" }}>Confira a experiência de quem já utiliza o MiniApp-i para impulsionar sua presença digital.</p>
         </div>
         
         <div 
@@ -129,37 +129,34 @@ const Testimonials = () => {
                   key={index} 
                   className="md:basis-1/3 basis-full"
                 >
-                  <div className="testimonial-card h-full bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-                    <div className="flex mb-4">
-                      {[1, 2, 3, 4, 5].map((star) => (
-                        <Star key={star} size={18} className="text-yellow-400 fill-yellow-400" />
-                      ))}
-                    </div>
-                    
-                    <p className="text-gray-700 mb-6 flex-grow">"{testimonial.text}"</p>
-                    
-                    <div className="flex items-center mt-auto">
-                      <img
-                        src={testimonial.avatar}
-                        alt={testimonial.name}
-                        className="w-12 h-12 rounded-full object-cover mr-4"
-                      />
-                      <div>
-                        <h4 className="font-semibold text-miniapp-primary">{testimonial.name}</h4>
-                        <p className="text-sm text-gray-600">{testimonial.role}</p>
+                  <div className="testimonial-card h-full p-8 rounded-lg relative" style={{ backgroundColor: "rgba(255, 255, 255, 0.1)" }}>
+                    <div className="relative z-10">
+                      <p className="mb-6 flex-grow text-white font-light italic">{testimonial.text}</p>
+                      
+                      <div className="flex items-center mt-auto">
+                        <img
+                          src={testimonial.avatar}
+                          alt={testimonial.name}
+                          className="w-12 h-12 rounded-full object-cover mr-4"
+                        />
+                        <div>
+                          <h4 className="font-semibold text-white mb-1">{testimonial.name}</h4>
+                          <p className="text-sm text-white opacity-80 m-0">{testimonial.role}</p>
+                        </div>
                       </div>
                     </div>
+                    <div className="absolute top-5 left-5 text-6xl opacity-20 font-serif z-0">"</div>
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
             
             <CarouselPrevious 
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 md:-translate-x-6 bg-white text-miniapp-primary z-10"
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 md:-translate-x-6 bg-white text-purple-600 z-10 hover:bg-gray-50 hover:scale-105 transition-all"
             />
             
             <CarouselNext 
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 md:translate-x-6 bg-white text-miniapp-primary z-10"
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 md:translate-x-6 bg-white text-purple-600 z-10 hover:bg-gray-50 hover:scale-105 transition-all"
             />
           </Carousel>
           
@@ -169,8 +166,9 @@ const Testimonials = () => {
                 key={index}
                 onClick={() => api?.scrollTo(index)}
                 className={`w-2 h-2 rounded-full transition-all ${
-                  index === activeIndex % testimonialsData.length ? "bg-miniapp-primary w-4" : "bg-gray-300"
+                  index === activeIndex % testimonialsData.length ? "bg-white w-4" : "bg-white/50"
                 }`}
+                style={{ backgroundColor: "var(--white)" }}
                 aria-label={`Testimonial ${index + 1}`}
               />
             ))}

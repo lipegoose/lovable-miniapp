@@ -1,6 +1,4 @@
 
-import { Check } from 'lucide-react';
-
 const Pricing = () => {
   return (
     <section className="py-20 bg-white" id="planos">
@@ -11,9 +9,10 @@ const Pricing = () => {
         </div>
         
         <div className="flex justify-center gap-8 mt-12">
-          <div className="flex-1 max-w-sm bg-gray-100 rounded-lg p-10 text-center transition-all duration-300 hover:shadow-lg hover:-translate-y-2.5 relative overflow-hidden">
-            <h3 className="text-2xl font-semibold mb-4">Atualização Avulsa</h3>
-            <div className="text-4xl font-bold mb-5">R$ 99<span className="text-sm font-normal text-gray-600">/único</span></div>
+          {/* Card Atualização Avulsa */}
+          <div className="flex-1 max-w-sm bg-white rounded-lg p-10 text-center transition-all duration-300 hover:-translate-y-2.5 relative overflow-hidden shadow-md">
+            <h3 className="text-2xl font-bold mb-4">Atualização Avulsa</h3>
+            <div className="text-6xl font-bold mb-6">R$ 99<span className="text-base ml-1 font-normal text-gray-600 align-top">/único</span></div>
             
             <ul className="list-none my-8 text-left">
               {[
@@ -25,20 +24,21 @@ const Pricing = () => {
               ].map((feature, index) => (
                 <li key={index} className="mb-4">
                   <span className="flex items-center">
-                    <Check className="w-5 h-5 mr-2 text-green-500" />
+                    <span className="text-purple-600 mr-2 font-bold text-xl">✓</span>
                     {feature}
                   </span>
                 </li>
               ))}
             </ul>
             
-            <a href="#cadastro" className="block w-full bg-miniapp-primary text-white py-3 px-4 rounded hover:bg-miniapp-secondary transition-colors">Quero esse plano</a>
+            <a href="#cadastro" className="block w-full bg-purple-600 text-white py-3 px-6 rounded-full text-lg font-medium hover:shadow-lg hover:bg-purple-700 transition-all">Quero esse plano</a>
           </div>
           
-          <div className="flex-1 max-w-sm bg-gradient-to-br from-miniapp-primary to-miniapp-secondary text-white rounded-lg p-10 text-center transition-all duration-300 hover:shadow-lg hover:-translate-y-2.5 relative overflow-hidden">
-            <div className="absolute top-5 right-[-30px] bg-green-500 text-white px-8 py-1 text-xs font-semibold transform rotate-45">Popular</div>
-            <h3 className="text-2xl font-semibold mb-4">Atualização Instantânea</h3>
-            <div className="text-4xl font-bold mb-5">R$ 49<span className="text-sm font-normal text-white/80">/mês</span></div>
+          {/* Card Atualização Instantânea */}
+          <div className="flex-1 max-w-sm text-white rounded-lg p-10 text-center transition-all duration-300 hover:-translate-y-2.5 relative overflow-hidden shadow-xl" style={{ background: "linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%)" }}>
+            <div className="absolute top-6 right-[-30px] bg-green-500 text-white px-8 py-1 text-xs font-semibold transform rotate-45">Popular</div>
+            <h3 className="text-2xl font-bold mb-4 text-white">Atualização Instantânea</h3>
+            <div className="text-6xl font-bold mb-6">R$ 49<span className="text-base ml-1 font-normal text-white/80 align-top">/mês</span></div>
             
             <ul className="list-none my-8 text-left">
               {[
@@ -51,14 +51,14 @@ const Pricing = () => {
               ].map((feature, index) => (
                 <li key={index} className="mb-4">
                   <span className="flex items-center">
-                    <Check className="w-5 h-5 mr-2 text-white" />
+                    <span className="text-white mr-2 font-bold text-xl">✓</span>
                     {feature}
                   </span>
                 </li>
               ))}
             </ul>
             
-            <a href="#cadastro" className="block w-full bg-white text-miniapp-primary py-3 px-4 rounded hover:bg-white/90 transition-colors">Quero esse plano</a>
+            <a href="#cadastro" className="block w-full bg-white text-purple-600 py-3 px-6 rounded-full text-lg font-medium hover:shadow-lg hover:bg-gray-100 transition-all">Quero esse plano</a>
           </div>
         </div>
       </div>
